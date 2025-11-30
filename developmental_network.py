@@ -288,30 +288,32 @@ def figure2_population_level_patterns():
     mu_allele_coop = 0.03 + 0.01 * np.random.randn(n_individuals)
     mu_allele_comp = 0.07 + 0.015 * np.random.randn(n_individuals)
 
-    fig, axes = plt.subplots(1, 3, figsize=(12, 4))
+    fig, axes = plt.subplots(1, 3, figsize=(13, 4))
 
     # Panel A: Model comparison - distributions
     ax1 = axes[0]
     bins = np.linspace(0, 0.12, 20)
-    ax1.hist(mu_coop_pop, bins=bins, alpha=0.6, label='Coop (Model B)', color='steelblue')
-    ax1.hist(mu_comp_pop, bins=bins, alpha=0.6, label='Comp (Model B)', color='coral')
+    ax1.hist(mu_coop_pop, bins=bins, alpha=0.6, label='Cooperative', color='steelblue')
+    ax1.hist(mu_comp_pop, bins=bins, alpha=0.6, label='Competitive', color='coral')
     ax1.axvline(mu_coop_pop.mean(), color='steelblue', linestyle='--', linewidth=2)
     ax1.axvline(mu_comp_pop.mean(), color='coral', linestyle='--', linewidth=2)
     ax1.set_xlabel('Cancer mortality $\\mu_S$')
     ax1.set_ylabel('Count')
     ax1.set_title('(A) Model B: Plastic policy')
-    ax1.legend()
 
     # Panel B: Model A distributions (allele-based)
     ax2 = axes[1]
-    ax2.hist(mu_allele_coop, bins=bins, alpha=0.6, label='Coop (Model A)', color='steelblue')
-    ax2.hist(mu_allele_comp, bins=bins, alpha=0.6, label='Comp (Model A)', color='coral')
+    ax2.hist(mu_allele_coop, bins=bins, alpha=0.6, label='Cooperative', color='steelblue')
+    ax2.hist(mu_allele_comp, bins=bins, alpha=0.6, label='Competitive', color='coral')
     ax2.axvline(mu_allele_coop.mean(), color='steelblue', linestyle='--', linewidth=2)
     ax2.axvline(mu_allele_comp.mean(), color='coral', linestyle='--', linewidth=2)
     ax2.set_xlabel('Cancer mortality $\\mu_S$')
     ax2.set_ylabel('Count')
     ax2.set_title('(B) Model A: Allele-based')
-    ax2.legend()
+
+    # Shared legend below panels A and B
+    handles, labels = ax1.get_legend_handles_labels()
+    fig.legend(handles, labels, loc='lower center', ncol=2, bbox_to_anchor=(0.35, -0.02), fontsize=9)
 
     # Panel C: Non-identifiability - aggregate statistics match
     ax3 = axes[2]
@@ -450,10 +452,11 @@ def figure3_projection_and_information_loss():
     ax3.set_title('(C) Variance decomposition')
     ax3.set_ylim(0, 1)
 
-    # Add annotation
+    # Add annotation - arrow points to top of Environment bar
+    env_bar_height = variances[0]
     ax3.annotate('Allele models\nattribute this\nto "genetic effects"',
-                xy=(0.5, 0.5), fontsize=9, ha='center',
-                xytext=(1.5, 0.7),
+                xy=(0, env_bar_height), fontsize=9, ha='center',
+                xytext=(1.5, 0.85),
                 arrowprops=dict(arrowstyle='->', color='black'))
 
     plt.tight_layout()
