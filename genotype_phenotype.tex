@@ -100,6 +100,14 @@ as the dimensionality of $\mathcal{M}$ increases.
 
 This nonergodicity has a crucial consequence: the developmental trajectory is \textit{trapped}. Once the system enters an attractor basin, it cannot spontaneously explore alternative basins. The final phenotype reflects not the equilibrium distribution over possible states, but the particular basin the trajectory happened to enter.
 
+\subsection{Beyond the Computational Metaphor}
+
+This continuous dynamical systems perspective differs fundamentally from the dominant metaphor in molecular biology. Since the discovery of the genetic code, biological systems have often been described using computational language: genes ``encode'' proteins, regulatory networks ``process'' signals, development follows a ``program.'' This metaphor treats the organism as a discrete-state machine executing algorithms.
+
+The nonergodic dynamics framework replaces this with continuous physics. Instead of discrete nodes and edges (as in standard network diagrams), we have continuous state spaces and smooth trajectories. Instead of algorithms that map inputs to outputs, we have dynamical systems that \textit{flow} through high-dimensional landscapes. The genome does not ``compute'' the phenotype---it shapes the landscape through which the developmental trajectory flows.
+
+This shift matters because computational metaphors implicitly assume ergodicity: given enough time or trials, the system can explore its state space and find optimal solutions. Continuous high-dimensional dynamics reveals why this assumption fails in biological time. The system is trapped by physics, not limited by computation.
+
 \subsection{Low-Dimensional Anchors}
 
 If developmental state space is vast and trajectories are trapped, what prevents phenotypic chaos? The answer is \textit{anchoring} by low-dimensional constraints.
@@ -145,7 +153,7 @@ Sierra et al.\ (2025) found that cooperative mammalian species have lower cancer
 
 Our framework suggests an alternative: cooperative environmental cues may guide developmental trajectories into attractor basins with higher somatic repair allocation. The genome constrains which basins are available; the social environment determines which basin is entered. Species that consistently experience cooperative environments would consistently develop into ``low-cancer'' attractor basins---producing the same aggregate pattern as allele-based selection, but via a different mechanism.
 
-Singh and Glowacki \cite{singh2022} argued that human ancestors experienced diverse social ecologies, favoring plastic developmental policies over fixed strategies. This is precisely the regime where trajectory-based mechanisms dominate: when environments vary, selection favors genomes that anchor multiple attractor basins, allowing environment-dependent phenotype determination.
+More generally, any species experiencing variable environments across generations would be expected to evolve genomes that anchor multiple attractor basins---allowing environment-dependent phenotype determination rather than fixed strategies. Singh and Glowacki \cite{singh2022} documented such environmental variability in human evolutionary history, but the principle applies broadly: when environments vary, selection favors trajectory-responsive developmental systems over rigidly canalized ones.
 
 
 \section{Model}\label{sec:model}
@@ -457,7 +465,7 @@ Genotype does not algorithmically determine phenotype. Genotype anchors a nonerg
 
 \section*{Data and Code Availability}
 
-Simulation code is available at \url{https://github.com/todd866/genotype-vs-phenotype}. The repository includes \texttt{developmental\_network.py}, which implements the developmental network (Equations 2--3, 5--7), generates all figures, and demonstrates the Twin Worlds experiment (Figure~\ref{fig:twins}).
+Simulation code is available at \url{https://github.com/todd866/nonergodic-development}. The repository includes \texttt{developmental\_network.py}, which implements the developmental network (Equations 2--3, 5--7), generates all figures, and demonstrates the Twin Worlds experiment (Figure~\ref{fig:twins}).
 
 \section*{Declaration of competing interest}
 The author declares that there are no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
