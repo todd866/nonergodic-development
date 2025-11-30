@@ -214,6 +214,8 @@ We define two environmental regimes that guide trajectories into different attra
 
 \noindent\textbf{Parameter values:} We use $L = 5$ (anchor dimension), $m = 20$ (developmental state dimension), $n = 10$ (phenotype dimension), and $p = 3$ (environmental input dimension). This gives $\Delta_D = m - (L + 1) = 14$ when measuring a single trait ($\mu_S$). Cancer parameters: $\mu_0 = 0.1$, $\alpha = 0.8$. See code for implementation details.
 
+\noindent\textbf{Note on model scope:} The developmental network is intentionally minimal and not fitted to any species. Its role is illustrative: to instantiate the dimensional and identifiability arguments with a concrete dynamical system, not to make quantitative predictions about specific organisms.
+
 \subsection{Contrasting Interpretations}
 
 Figure~\ref{fig:dags} illustrates how the same outcome admits two causal interpretations:
@@ -353,7 +355,7 @@ Our point is that the aggregate pattern ``cooperative = less cancer'' is equally
     \item \textbf{Genetic assimilation:} An initially trajectory-dependent response becomes anchor-encoded through sustained selection.
 \end{enumerate}
 
-These are non-identifiable from comparative data. Distinguishing them requires intervention experiments.
+These are non-identifiable from comparative data. Distinguishing them requires intervention experiments. Our result should therefore be read as a \textit{completion} of Sierra et al.'s model rather than a refutation: allele-level and trajectory-level accounts are two projections of a single underlying high-dimensional developmental system.
 
 \subsection{When Nonergodicity Dominates}
 
