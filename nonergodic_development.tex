@@ -85,9 +85,11 @@ In this paper, we:
 
 \subsection{Nonergodicity in High-Dimensional Systems}
 
-A dynamical system is \textit{ergodic} if, given sufficient time, its trajectory will visit every accessible region of state space with frequency proportional to the equilibrium measure. Ergodicity underlies much of statistical mechanics: it allows us to equate time averages with ensemble averages.
+A dynamical system is \textit{ergodic} if, given sufficient time, its trajectory will visit every accessible region of state space with frequency proportional to the equilibrium measure. Ergodicity underlies much of statistical mechanics: it allows us to equate time averages with ensemble averages, and justifies treating a single long trajectory as representative of the whole system \cite{peters2019}.
 
-Biological development is not ergodic. The state space of a developing organism---the configuration of gene expression, protein concentrations, cellular positions, and tissue architectures---is astronomically large. A gene regulatory network with $N$ genes, each with $k$ expression levels, has $k^N$ possible states. For realistic values ($N \sim 20,000$, $k \sim 10$), this exceeds any timescale accessible to biological processes.
+This is not a contingent property but a mathematical fact about dimensionality: state space volume grows exponentially with dimension ($k^D$ for $D$ dimensions with $k$ states each), while trajectory length grows only linearly with time. For any fixed timescale, sufficiently high dimensionality guarantees nonergodicity. The system cannot explore its own possibilities.
+
+Biological systems are high-dimensional. A gene regulatory network with $N$ genes, each with $k$ expression levels, has $k^N$ possible states. For realistic values ($N \sim 20,000$, $k \sim 10$), this exceeds any timescale accessible to biological processes. But this is not unique to development---behavior, physiology, and cognition all unfold in state spaces too vast to explore. An organism cannot simultaneously pursue all possible actions; a cell cannot occupy all metabolic states; a brain cannot think all thoughts. High-dimensional biological systems are nonergodic by necessity, not by accident.
 
 \begin{definition}[Developmental Nonergodicity]
 A developmental system is \textbf{nonergodic} if its trajectory through state space cannot visit a representative sample of accessible states within the organism's lifetime. Formally, let $\mathcal{M}$ be the accessible manifold of developmental states. The system is nonergodic if:
@@ -567,6 +569,9 @@ Roberts, G.O., Gelman, A., \& Gilks, W.R. (1997). Weak convergence and optimal s
 
 \bibitem{levinthal1969}
 Levinthal, C. (1969). How to fold graciously. In \emph{M\"{o}ssbauer Spectroscopy in Biological Systems: Proceedings of a Meeting held at Allerton House, Monticello, Illinois} (pp. 22--24). University of Illinois Press.
+
+\bibitem{peters2019}
+Peters, O. (2019). The ergodicity problem in economics. \emph{Nature Physics}, 15, 1216--1221. \url{https://doi.org/10.1038/s41567-019-0732-0}
 
 \end{thebibliography}
 
