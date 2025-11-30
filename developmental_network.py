@@ -703,7 +703,6 @@ def figure6_twin_worlds():
     ax1.set_xlabel('Cancer mortality $\\mu_S$')
     ax1.set_ylabel('Number of species')
     ax1.set_title('(A) Same genomes, different worlds')
-    ax1.legend()
 
     # Panel B: What a naive allele model would infer
     ax2 = axes[1]
@@ -747,9 +746,12 @@ def figure6_twin_worlds():
     ax3.set_xlabel('Genotype (first component)')
     ax3.set_ylabel('Cancer mortality $\\mu_S$')
     ax3.set_title('(C) Environment, not genes,\ndetermines $\\mu_S$')
-    ax3.legend()
 
-    plt.tight_layout()
+    # Shared legend below all panels
+    handles, labels = ax1.get_legend_handles_labels()
+    fig.legend(handles, labels, loc='lower center', ncol=2, bbox_to_anchor=(0.5, -0.02), fontsize=9)
+
+    plt.tight_layout(rect=[0, 0.05, 1, 1])
     plt.savefig('figures/fig6_twin_worlds.pdf')
     plt.savefig('figures/fig6_twin_worlds.png')
     plt.close()
