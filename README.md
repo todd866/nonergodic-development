@@ -15,11 +15,11 @@ Biological development is a high-dimensional dynamical process that cannot explo
 ## Repository Contents
 
 ```
-├── genotype_phenotype.tex    # Main paper (LaTeX, BioSystems format)
-├── genotype_phenotype.pdf    # Compiled paper
-├── cover_letter.tex          # Cover letter to editor
-├── developmental_network.py  # All simulation code
-└── figures/                  # Generated figures (PDF + PNG)
+├── nonergodic_development.tex  # Main paper (LaTeX, BioSystems format)
+├── nonergodic_development.pdf  # Compiled paper
+├── nonergodic_development.py   # All simulation code
+├── cover_letter.tex            # Cover letter to editor
+└── figures/                    # Generated figures (PDF + PNG)
     ├── fig1_same_genotype.*
     ├── fig2_population_patterns.*
     ├── fig3_causal_dags.*
@@ -32,7 +32,7 @@ Biological development is a high-dimensional dynamical process that cannot explo
 
 ```bash
 pip install numpy matplotlib scipy scikit-learn
-python developmental_network.py
+python nonergodic_development.py
 ```
 
 This generates all 6 figures in the `figures/` directory and exactly reproduces the plots in the paper.
