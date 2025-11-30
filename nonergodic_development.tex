@@ -356,6 +356,8 @@ This is the critical empirical test. If moving organisms from competitive to coo
 
 We acknowledge a confound: organisms placed in mismatched environments may show phenotypic changes due to stress rather than trajectory guidance \textit{per se}. Teasing apart ``cooperative cues guide development'' from ``environmental mismatch causes stress'' is difficult. But this difficulty is itself the point: the system is high-dimensional, and clean causal decomposition may be impossible. What cooperative environments provide is \textit{stability}---slower, more predictable conditions that allow cellular trajectories to remain coordinated. Whether we call this ``reduced stress'' or ``trajectory guidance,'' the mechanism is the same: stability enables coherence; instability enables bifurcation. The phenotype emerges from trajectory dynamics that resist simple causal attribution.
 
+Crucially, empirical analogs of this intervention already exist. Cross-fostering studies in rodents demonstrate that pups born to low-care (high-licking/grooming) mothers but raised by high-care foster mothers develop the low-stress phenotype, complete with altered methylation of the glucocorticoid receptor gene \cite{weaver2004}. The phenotype tracks the developmental trajectory, not the genetic anchor. Our model provides the dynamical explanation: the high-care environment buffers the trajectory, allowing it to settle into the high-coherence attractor despite the ``low-coherence'' genetic background. This is Figure~\ref{fig:prediction} realized in actual rodents.
+
 \subsection{Nonergodicity at the Social Scale: Fractal Cooperation}
 
 The preceding results demonstrate nonergodicity at the cellular-to-organismal scale: developmental trajectories get trapped in attractor basins, and coherence determines which basin. But coherence is not just a trait---it is \textit{self-stabilizing}. For trapped states to persist over evolutionary time, they must construct the environmental conditions that ensure their own re-creation. This is niche construction at the dynamical systems level.
@@ -401,6 +403,7 @@ This reframes several longstanding puzzles:
     \item \textbf{Missing heritability:} May include missing trajectory information, not only missing variants. GWAS project out the environmental history that determines which attractor each individual occupies.
     \item \textbf{Epigenetic memory:} Not a separate mechanism, but trapped states in nonergodic dynamics. The genome anchors; the trajectory traps.
     \item \textbf{Genetic assimilation:} How plastic responses become canalized. If an attractor basin is consistently entered across generations, selection can modify the anchor to make that basin deeper or more accessible---converting trajectory-dependence into anchor-dependence.
+    \item \textbf{Developmental Origins of Health and Disease (DOHaD):} Our framework formalizes the DOHaD hypothesis \cite{barker2007}, which posits that early environmental exposures establish long-term phenotypic trajectories. In our terms, early perturbations push the system into specific attractor basins (e.g., metabolic thrift, high inflammation) that persist throughout life. The ``missing heritability'' of these traits is the missing record of initial trajectory divergence.
 \end{itemize}
 
 \subsection{Steelmanning the Allele View}
@@ -521,6 +524,8 @@ This is why $\Delta_D$ matters: it quantifies when the additive decomposition br
 Our framework provides formal foundations for several recent proposals:
 
 \textbf{Cancer memory} \cite{lissek2024}: Lissek argued that malignancy can progress through epigenetic mechanisms once initiated. In our terms: oncogenic changes perturb the developmental trajectory, pushing the system into a new attractor basin. The nonergodic dynamics \textit{are} the memory---the system cannot spontaneously return to its previous basin.
+
+\textbf{Cancer attractors} \cite{huang2009}: Huang proposed that cancer represents regression to an atavistic attractor state---a reversion to unicellular-like dynamics encoded in the genome's deep history. We extend this by explicitly linking the \textit{stability} of that attractor to the \textit{volatility} of the external environment via the Dimensional Gap. While Huang focuses on the topography of the attractor landscape, we focus on the trajectory's capacity to navigate it: cooperative buffering flattens the effective landscape, making the healthy attractor deeper and the atavistic basin harder to reach.
 
 \textbf{Bioelectric goal states} \cite{levin2023}: Levin has proposed that cells maintain ``goal states''---anatomical target morphologies encoded in bioelectric patterns. When cells ``forget'' their goal, cancer results. Our framework provides the dynamical systems formalization: the ``goal'' is the organismal attractor basin; ``forgetting'' is bifurcation to a divergent attractor. This reframes teleological language in mechanistic terms while preserving the key insight that cancer is fundamentally a failure of coordination, not merely accumulated mutations.
 
@@ -690,6 +695,12 @@ Berens, A.E., Jensen, S.K.G., and Nelson, C.A. (2017). Biological embedding of c
 
 \bibitem{mehta2010}
 Mehta, P.H. and Josephs, R.A. (2010). Testosterone and cortisol jointly regulate dominance: Evidence for a dual-hormone hypothesis. \emph{Hormones and Behavior}, 58(5), 898--906. \url{https://doi.org/10.1016/j.yhbeh.2010.08.020}
+
+\bibitem{weaver2004}
+Weaver, I.C., Cervoni, N., Champagne, F.A., D'Alessio, A.C., Sharma, S., Seckl, J.R., Dymov, S., Szyf, M., and Meaney, M.J. (2004). Epigenetic programming by maternal behavior. \emph{Nature Neuroscience}, 7(8), 847--854. \url{https://doi.org/10.1038/nn1276}
+
+\bibitem{barker2007}
+Barker, D.J. (2007). The origins of the developmental origins theory. \emph{Journal of Internal Medicine}, 261(5), 412--417. \url{https://doi.org/10.1111/j.1365-2796.2007.01809.x}
 
 \end{thebibliography}
 
