@@ -94,26 +94,27 @@ class DevelopmentalNetwork:
             return phenotype, np.array(trajectory)
         return phenotype
 
-    def get_repair_allocation(self, phenotype):
+    def get_coherence(self, phenotype):
         """
-        Extract "repair vs proliferation" allocation from phenotype.
+        Extract developmental coherence from phenotype.
         This is the key variable that determines cancer risk.
 
-        Convention: higher value = more repair, lower cancer risk
+        Higher coherence = more coordinated development = fewer bifurcations = lower cancer.
+        Cancer is attractor bifurcation: cells diverging from the organismal trajectory.
         """
-        # Use first component as repair allocation (arbitrary but consistent)
+        # Use first component as coherence (arbitrary but consistent)
         return (phenotype[0] + 1) / 2  # Map from [-1,1] to [0,1]
 
     def get_cancer_mortality(self, phenotype, baseline_mu=0.1):
         """
         Compute effective cancer mortality from phenotype.
 
-        Higher repair allocation → lower cancer mortality.
+        Higher coherence → fewer bifurcations → lower cancer mortality.
         This is the emergent μ_S that allele models treat as a genetic parameter.
         """
-        repair = self.get_repair_allocation(phenotype)
-        # Repair reduces cancer mortality
-        mu_cancer = baseline_mu * (1 - 0.8 * repair)
+        c = self.get_coherence(phenotype)
+        # Coherence reduces cancer mortality (fewer cellular bifurcations)
+        mu_cancer = baseline_mu * (1 - 0.8 * c)
         return mu_cancer
 
 
@@ -217,26 +218,26 @@ def figure1_same_genotype_different_phenotype():
 
     # Panel D: Emergent cancer mortality
     ax4 = axes[1, 1]
-    repair_coop = net.get_repair_allocation(pheno_coop)
-    repair_comp = net.get_repair_allocation(pheno_comp)
+    c_coop = net.get_coherence(pheno_coop)
+    c_comp = net.get_coherence(pheno_comp)
     mu_coop = net.get_cancer_mortality(pheno_coop)
     mu_comp = net.get_cancer_mortality(pheno_comp)
 
     labels = ['Cooperative', 'Competitive']
-    repairs = [repair_coop, repair_comp]
+    coherences = [c_coop, c_comp]
     mus = [mu_coop, mu_comp]
     colors = ['steelblue', 'coral']
 
     ax4_twin = ax4.twinx()
     x_pos = [0, 1]
-    ax4.bar([p - 0.15 for p in x_pos], repairs, 0.3, color=colors, alpha=0.7, label='Repair allocation')
+    ax4.bar([p - 0.15 for p in x_pos], coherences, 0.3, color=colors, alpha=0.7, label='Coherence')
     ax4_twin.bar([p + 0.15 for p in x_pos], mus, 0.3, color=colors, alpha=0.4, hatch='//', label='Cancer mortality')
 
-    ax4.set_ylabel('Repair allocation', color='black')
+    ax4.set_ylabel('Developmental coherence $c$', color='black')
     ax4_twin.set_ylabel('Cancer mortality $\\mu_S$', color='gray')
     ax4.set_xticks(x_pos)
     ax4.set_xticklabels(labels)
-    ax4.set_title('(D) Emergent repair & cancer risk')
+    ax4.set_title('(D) Coherence & cancer risk')
     ax4.set_ylim(0, 1)
     ax4_twin.set_ylim(0, 0.15)
 
@@ -246,7 +247,7 @@ def figure1_same_genotype_different_phenotype():
     plt.close()
     print("Generated: figures/fig1_same_genotype.pdf")
 
-    return repair_coop, repair_comp, mu_coop, mu_comp
+    return c_coop, c_comp, mu_coop, mu_comp
 
 
 def figure2_population_level_patterns():
@@ -376,14 +377,14 @@ def figure3_projection_and_information_loss():
 
         pheno = net.develop(g, env)
         mu = net.get_cancer_mortality(pheno)
-        repair = net.get_repair_allocation(pheno)
+        coherence = net.get_coherence(pheno)
 
         data.append({
             'genotype': g,
             'env_label': env_label,
             'phenotype': pheno,
             'mu': mu,
-            'repair': repair
+            'coherence': coherence
         })
 
     fig, axes = plt.subplots(1, 3, figsize=(12, 4))

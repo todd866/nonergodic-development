@@ -65,7 +65,7 @@ We apply this framework to a recent finding in cancer evolution. Sierra et al.\ 
 The same pattern admits a trajectory-based interpretation:
 \begin{itemize}
     \item \textbf{Allele interpretation:} Cooperative lineages have accumulated cancer-suppressing alleles through selection.
-    \item \textbf{Trajectory interpretation:} Cooperative environmental cues guide development into attractor basins with higher somatic repair allocation, yielding lower cancer mortality as an emergent property.
+    \item \textbf{Trajectory interpretation:} Cooperative environmental cues enable slower, more coordinated development with fewer attractor bifurcations, yielding lower cancer mortality as an emergent property.
 \end{itemize}
 
 These interpretations are \textit{non-identifiable} from cross-species comparative data. They diverge only in predictions for intervention: the allele model predicts that changing an organism's environment will not change its cancer risk; the trajectory model predicts substantial phenotypic shifts.
@@ -153,7 +153,7 @@ This provides the information-theoretic foundation for Lissek's \cite{lissek2024
 
 Sierra et al.\ (2025) found that cooperative mammalian species have lower cancer prevalence than competitive species \cite{sierra2025}. Their model explains this via allele frequency differences: selection favors cancer-suppressing alleles in cooperative lineages where older individuals contribute as helpers.
 
-Our framework suggests an alternative: cooperative environmental cues may guide developmental trajectories into attractor basins with higher somatic repair allocation. The genome constrains which basins are available; the social environment determines which basin is entered. Species that consistently experience cooperative environments would consistently develop into ``low-cancer'' attractor basins---producing the same aggregate pattern as allele-based selection, but via a different mechanism.
+Our framework suggests an alternative: cooperative environmental cues may enable slower, more coordinated developmental trajectories with fewer cellular bifurcations. The genome constrains which trajectories are possible; the social environment determines how coherently development proceeds. Species that consistently experience cooperative environments would consistently develop with higher coherence---producing the same aggregate pattern (lower cancer) as allele-based selection, but via a different mechanism.
 
 More generally, any species experiencing variable environments across generations would be expected to evolve genomes that anchor multiple attractor basins---allowing environment-dependent phenotype determination rather than fixed strategies. Singh and Glowacki \cite{singh2022} documented such environmental variability in human evolutionary history, but the principle applies broadly: when environments vary, selection favors trajectory-responsive developmental systems over rigidly canalized ones.
 
@@ -189,18 +189,18 @@ The phenotype $x \in \R^n$ is a readout of the final developmental state:
 
 This final state $h_T$ is a \textit{trapped state}---the endpoint of a nonergodic trajectory. The same genotype $g$ can produce different $h_T$ (and thus different $x$) depending on which trajectory was followed.
 
-We extract a ``repair allocation'' variable $r \in [0,1]$ from the phenotype, representing the organism's investment in somatic maintenance versus reproduction---a classic life-history tradeoff \cite{stearns1992,roff2002}. The emergent cancer mortality is:
+We extract a ``developmental coherence'' variable $c \in [0,1]$ from the phenotype, representing how well-coordinated the developmental trajectory was---how consistently all cells followed the same attractor. Cancer, in this framing, is attractor bifurcation: cells that diverge from the organismal trajectory into a different basin. The emergent cancer mortality is:
 \begin{equation}\label{eq:mu}
-    \mu_S(x) = \mu_0 (1 - \alpha \cdot r(x))
+    \mu_S(x) = \mu_0 (1 - \alpha \cdot c(x))
 \end{equation}
-where $\mu_0$ is baseline mortality and $\alpha \in (0,1)$ is the efficacy of repair.
+where $\mu_0$ is baseline mortality and $\alpha \in (0,1)$ is the efficacy of coherence in preventing bifurcation.
 
 \subsection{Environmental Regimes}
 
 We define two environmental regimes that guide trajectories into different attractor basins:
 \begin{itemize}
-    \item \textbf{Cooperative:} Low variance, high social support, low conflict $\to$ trajectories toward high-repair attractors.
-    \item \textbf{Competitive:} High variance, low support, high conflict $\to$ trajectories toward low-repair attractors.
+    \item \textbf{Cooperative:} Low variance, high social support, low conflict $\to$ slower, more coordinated development $\to$ high coherence.
+    \item \textbf{Competitive:} High variance, low support, high conflict $\to$ faster, less coordinated development $\to$ low coherence.
 \end{itemize}
 
 \noindent\textbf{Parameter values:} We use $L = 5$ (anchor dimension), $m = 20$ (developmental state dimension), $n = 10$ (phenotype dimension), and $p = 3$ (environmental input dimension). This gives $\Delta_D = m - (L + 1) = 14$ when measuring a single trait ($\mu_S$). Cancer parameters: $\mu_0 = 0.1$, $\alpha = 0.8$. See code for implementation details.
@@ -218,21 +218,21 @@ Both produce the same aggregate correlation (Environment $\leftrightarrow$ $\mu_
 \section{Non-Identifiability Result}\label{sec:proposition}
 
 \begin{proposition}[Non-identifiability of allele vs.\ policy mechanisms]\label{prop1}
-Let Model A be any allele-based system where late-life mortality takes values $\{\mu, \mu + \delta\}$ across two ecological regimes, with $0 \leq \mu < \mu + \delta \leq \mu_0$. Let Model B be any plasticity-based developmental system \textbf{capable of realizing any repair allocation $r \in [0,1]$ via some environmental history}, and where $\mu_S = \mu_0(1 - \alpha r)$ as in Equation~\ref{eq:mu}. Then for any pair $(\mu, \mu + \delta)$ satisfying these constraints, there exists an environment pair $(E_{\text{coop}}, E_{\text{comp}})$ such that the induced $\mu_S$ distributions in Model B match those in Model A for all species-level summary statistics.
+Let Model A be any allele-based system where late-life mortality takes values $\{\mu, \mu + \delta\}$ across two ecological regimes, with $0 \leq \mu < \mu + \delta \leq \mu_0$. Let Model B be any trajectory-based developmental system \textbf{capable of realizing any coherence level $c \in [0,1]$ via some environmental history}, and where $\mu_S = \mu_0(1 - \alpha c)$ as in Equation~\ref{eq:mu}. Then for any pair $(\mu, \mu + \delta)$ satisfying these constraints, there exists an environment pair $(E_{\text{coop}}, E_{\text{comp}})$ such that the induced $\mu_S$ distributions in Model B match those in Model A for all species-level summary statistics.
 \end{proposition}
 
 \begin{proof}
 Take any $(\mu, \mu + \delta)$ from Model A. We construct environments that induce matching $\mu_S$ distributions in Model B.
 
-Choose $r_{\text{coop}}$ and $r_{\text{comp}}$ such that:
+Choose $c_{\text{coop}}$ and $c_{\text{comp}}$ such that:
 \begin{align}
-    \mu_0(1 - \alpha r_{\text{coop}}) &= \mu \\
-    \mu_0(1 - \alpha r_{\text{comp}}) &= \mu + \delta
+    \mu_0(1 - \alpha c_{\text{coop}}) &= \mu \\
+    \mu_0(1 - \alpha c_{\text{comp}}) &= \mu + \delta
 \end{align}
 
-Solving: $r_{\text{coop}} = (1 - \mu/\mu_0)/\alpha$ and $r_{\text{comp}} = (1 - (\mu + \delta)/\mu_0)/\alpha$.
+Solving: $c_{\text{coop}} = (1 - \mu/\mu_0)/\alpha$ and $c_{\text{comp}} = (1 - (\mu + \delta)/\mu_0)/\alpha$.
 
-For sufficiently expressive dynamics (e.g., the recurrent network of Equation~\ref{eq:dynamics}), there exists a mapping from environmental histories to any desired $r$; this is empirically illustrated in Figure~\ref{fig:same_genotype}D. Thus there exist environments $E_{\text{coop}}$ and $E_{\text{comp}}$ that induce these repair levels.
+For sufficiently expressive dynamics (e.g., the recurrent network of Equation~\ref{eq:dynamics}), there exists a mapping from environmental histories to any desired $c$; this is empirically illustrated in Figure~\ref{fig:same_genotype}D. Thus there exist environments $E_{\text{coop}}$ and $E_{\text{comp}}$ that induce these coherence levels.
 
 Therefore, any species-level summary (mean $\mu_S$, variance, etc.) that Model A produces can be exactly matched by Model B with appropriate environment choice. The models are observationally equivalent at this level.
 \end{proof}
@@ -253,11 +253,11 @@ Figure~\ref{fig:same_genotype} demonstrates the fundamental prediction of nonerg
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig1_same_genotype.pdf}
-    \caption{\textbf{Trajectory divergence under identical anchoring.} (A) Two environmental histories: cooperative (blue) and competitive (red). (B) Developmental trajectories through state space (PCA projection); same starting point (green circle), different endpoints (squares). (C) Different trapped states produce different phenotypes. (D) Different attractor basins yield different repair allocations and cancer mortality---same genotype, different outcomes.}
+    \caption{\textbf{Trajectory divergence under identical anchoring.} (A) Two environmental histories: cooperative (blue) and competitive (red). (B) Developmental trajectories through state space (PCA projection); same starting point (green circle), different endpoints (squares). (C) Different trapped states produce different phenotypes. (D) Different developmental coherence and cancer mortality emerge from the same genotype---cooperative environments enable more coordinated development with fewer bifurcations.}
     \label{fig:same_genotype}
 \end{figure}
 
-Panel (B) is the key visualization: the two trajectories diverge in state space despite sharing the same anchor constraints. The endpoints represent different attractor basins---trapped states that persist because the system cannot spontaneously explore alternatives. Panel (D) shows the phenotypic consequence: different repair allocations and thus different cancer mortality from identical genotypes.
+Panel (B) is the key visualization: the two trajectories diverge in state space despite sharing the same anchor constraints. The endpoints represent different attractor basins---trapped states that persist because the system cannot spontaneously explore alternatives. Panel (D) shows the phenotypic consequence: different developmental coherence and thus different cancer mortality from identical genotypes.
 
 \subsection{Population-Level Non-Identifiability}
 
@@ -316,7 +316,7 @@ Figure~\ref{fig:prediction} shows where the models diverge. The allele model pre
     \label{fig:prediction}
 \end{figure}
 
-This is the critical empirical test. If moving organisms from competitive to cooperative environments produces phenotypic shifts toward higher repair allocation, the trajectory model is supported. If phenotypes remain stable, the allele model is supported.
+This is the critical empirical test. If moving organisms from competitive to cooperative environments produces phenotypic shifts toward higher developmental coherence (fewer bifurcations), the trajectory model is supported. If phenotypes remain stable, the allele model is supported.
 
 
 \section{Discussion}\label{sec:discussion}
@@ -338,8 +338,8 @@ Allele-based models are not wrong. Sierra et al.'s finding that cooperative spec
 
 Our point is that the aggregate pattern ``cooperative = less cancer'' is equally consistent with:
 \begin{enumerate}
-    \item \textbf{Anchor modification:} Selection has reshaped the attractor landscape to favor high-repair basins.
-    \item \textbf{Trajectory guidance:} Cooperative environments guide trajectories into high-repair attractor basins that already exist.
+    \item \textbf{Anchor modification:} Selection has reshaped the attractor landscape to favor high-coherence developmental modes.
+    \item \textbf{Trajectory guidance:} Cooperative environments enable more coordinated development, reducing bifurcation probability.
     \item \textbf{Genetic assimilation:} An initially trajectory-dependent response becomes anchor-encoded through sustained selection.
 \end{enumerate}
 
@@ -443,6 +443,8 @@ Our framework provides formal foundations for several recent proposals:
 
 \textbf{Cancer memory} \cite{lissek2024}: Lissek argued that malignancy can progress through epigenetic mechanisms once initiated. In our terms: oncogenic changes perturb the developmental trajectory, pushing the system into a new attractor basin. The nonergodic dynamics \textit{are} the memory---the system cannot spontaneously return to its previous basin.
 
+\textbf{Bioelectric goal states} \cite{levin2023}: Levin has proposed that cells maintain ``goal states''---anatomical target morphologies encoded in bioelectric patterns. When cells ``forget'' their goal, cancer results. Our framework provides the dynamical systems formalization: the ``goal'' is the organismal attractor basin; ``forgetting'' is bifurcation to a divergent attractor. This reframes teleological language in mechanistic terms while preserving the key insight that cancer is fundamentally a failure of coordination, not merely accumulated mutations.
+
 \textbf{Developmental plasticity} \cite{lee2022,letsou2024}: High-dimensional developmental systems with large $\Delta_D$ naturally exhibit plasticity---many attractor basins are accessible from a single anchor.
 
 \textbf{Systems evolution} \cite{corning2022}: Evolution is primarily about functional organization, not individual genes. In our terms: selection modifies anchors, but anchors constrain organizational possibilities without fully determining them.
@@ -532,6 +534,9 @@ Wagner, A. (2011). \emph{The Origins of Evolutionary Innovations: A Theory of Tr
 
 \bibitem{lissek2024}
 Lissek, T. (2024). Cancer memory as a mechanism to establish malignancy. \emph{BioSystems}, 247, 105381. \url{https://doi.org/10.1016/j.biosystems.2024.105381}
+
+\bibitem{levin2023}
+Levin, M. (2023). Bioelectric networks: The cognitive glue enabling evolutionary scaling from physiology to mind. \emph{Animal Cognition}, 26, 1865--1891. \url{https://doi.org/10.1007/s10071-023-01780-3}
 
 \bibitem{lee2022}
 Lee, C., Axtell, M., \& Bhattacharya, S. (2022). Evolution and maintenance of phenotypic plasticity. \emph{BioSystems}, 222, 104782. \url{https://doi.org/10.1016/j.biosystems.2022.104782}
