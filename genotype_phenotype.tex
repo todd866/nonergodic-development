@@ -104,7 +104,9 @@ This nonergodicity has a crucial consequence: the developmental trajectory is \t
 
 This continuous dynamical systems perspective differs fundamentally from the dominant metaphor in molecular biology. Since the discovery of the genetic code, biological systems have been described using computational language: genes ``encode'' proteins, regulatory networks ``process'' signals, development follows a ``program.'' This framing---treating organisms as discrete-state machines executing algorithms---has been so successful and so pervasive that it is rarely questioned. Network diagrams with nodes and edges are the standard visual vocabulary; information flow through discrete processing steps is the default conceptual framework.
 
-We propose a complementary perspective grounded in continuous physics. Instead of discrete nodes and edges, we have continuous state spaces and smooth trajectories. Instead of algorithms that map inputs to outputs, we have dynamical systems that \textit{flow} through high-dimensional landscapes. The genome does not ``compute'' the phenotype---it shapes the landscape through which the developmental trajectory flows.
+Yet the graph model carries a hidden puzzle: how do discrete signals get routed precisely through the molecular chaos of a living cell? The network diagram shows an edge from node A to node B, but physically there is no edge---only molecules diffusing in crowded cytoplasm. Students of cell biology often notice this gap and eventually stop asking.
+
+We propose a complementary perspective grounded in continuous physics. Instead of discrete nodes and edges, we have continuous state spaces and smooth trajectories. Instead of algorithms that map inputs to outputs, we have dynamical systems that \textit{flow} through high-dimensional landscapes. The genome does not ``compute'' the phenotype---it shapes the landscape through which the developmental trajectory flows. The routing puzzle dissolves: there are no discrete signals being routed, only continuous trajectories constrained by the physics of the substrate.
 
 This shift matters because computational metaphors implicitly assume something like ergodicity: that given enough time or trials, the system can explore its state space. Continuous high-dimensional dynamics reveals why this assumption fails in biological time. The state space is too vast; trajectories are trapped. The phenotype is not the output of a computation but the basin into which a physical system settled.
 
@@ -113,10 +115,10 @@ This shift matters because computational metaphors implicitly assume something l
 If developmental state space is vast and trajectories are trapped, what prevents phenotypic chaos? The answer is \textit{anchoring} by low-dimensional constraints.
 
 \begin{definition}[Developmental Anchor]
-An \textbf{anchor} is a low-dimensional structure that constrains which regions of developmental state space are reachable. The genome is the primary anchor: it specifies the regulatory network topology, protein sequences, and signaling pathways that define the ``landscape'' of possible developmental trajectories.
+An \textbf{anchor} is a low-dimensional structure that constrains which regions of developmental state space are reachable. The genome is the primary anchor, specifying regulatory network topology, protein sequences, and signaling pathways. The epigenome provides secondary anchoring, modulating which regions of the genome-defined landscape are accessible at any given time.
 \end{definition}
 
-The genome does not specify which attractor basin the system will occupy---that depends on the trajectory, which depends on environmental history. But the genome constrains \textit{which basins exist} and \textit{which are reachable} from a given starting point.
+Together, genetic and epigenetic anchors define the ``landscape'' of possible developmental trajectories. They do not specify which attractor basin the system will occupy---that depends on the trajectory, which depends on environmental history. But the anchors constrain \textit{which basins exist} and \textit{which are reachable} from a given starting point.
 
 This is precisely Waddington's \cite{waddington1957} epigenetic landscape, reframed in dynamical systems terms: the genome shapes the hills and valleys; the developmental trajectory is a ball rolling down one particular path. Different environmental perturbations can push the ball into different valleys---but not into valleys that the landscape doesn't contain.
 
